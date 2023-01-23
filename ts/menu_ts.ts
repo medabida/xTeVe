@@ -1656,19 +1656,23 @@ class XMLTVFile {
 
     }
 
-    var select = document.createElement("SELECT")
+    var searchableInput = document.createElement("INPUT");
+    searchableInput.setAttribute("list", "files-list");
+    
+    var datalist = document.createElement("DATALIST");
+    
     for (let i = 0; i < text.length; i++) {
       var option = document.createElement("OPTION")
       option.setAttribute("value", values[i])
       option.innerText = text[i]
-      select.appendChild(option)
+      datalist.appendChild(option)
     }
 
-    if(set != "") {
-      (select as HTMLSelectElement).value = set
-    }
+//     if(set != "") {
+//       (select as HTMLSelectElement).value = set
+//     }
 
-    return select
+    return searchableInput
   }
 
   getPrograms(file:string, set:string):any {
